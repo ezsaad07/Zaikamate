@@ -1,0 +1,55 @@
+.progress-wrapper {
+  background: transparent;
+  padding: 10px;
+  border-radius: 20px;
+  width: min(320px, 100%);
+}
+
+.progress-bar {
+  position: relative;
+  border: 1px solid #bfc7ba;
+  height: 28px;
+  background: #f5f2ed;
+  border-radius: 999px;
+  overflow: visible;
+}
+
+.progress-fill-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #f4a261, #8fd694);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.progress-text {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+
+.progress-icon {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  pointer-events: none;
+}

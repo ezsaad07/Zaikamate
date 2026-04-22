@@ -1,0 +1,58 @@
+.timer-container {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  width: min(320px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.2));
+}
+
+.title {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.flip-timer .flip-unit {
+  margin: 0 5px;
+}
+
+.flip-timer .flip-card {
+  background: white;
+  border-radius: 6px;
+  font-size: 20px;
+  width: 45px;
+  height: 55px;
+}
+
+.flip-timer .flip-clock-label {
+  font-size: 10px;
+  margin-top: 6px;
+  color: #333;
+}
+
+.flip-timer .flip-clock-divider {
+  font-size: 18px;
+  color: #333;
+}
+
+.flip-timer {
+  width: 100%;
+  justify-content: center;
+  --fcc-spacing: 10px;
+  --fcc-digit-block-width: 31px;
+  --fcc-digit-block-height: 53px;
+  --fcc-digit-block-radius: 4px;
+  --fcc-digit-block-spacing: 4px;
+  --fcc-digit-font-size: 33px;
+  --fcc-label-font-size: 13px;
+  --fcc-separator-size: 5px;
+  --fcc-background: #fff;
+  --fcc-digit-color: #111;
+  --fcc-divider-color: rgba(0, 0, 0, 0.25);
+  --fcc-separator-color: #111;
+  --fcc-label-color: #333;
+  --fcc-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
