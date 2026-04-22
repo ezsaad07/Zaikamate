@@ -46,29 +46,36 @@ const celebrationParticles = [
 ]
 
 function ComingSoon() {
-  const countdownDuration = 1 * 60 * 1000
+  const countdownDuration = 1 * 15 * 1000
   const startTime = useMemo(() => Date.now(), [])
   const [progress, setProgress] = useState(0)
   const [showLaunchPopup, setShowLaunchPopup] = useState(false)
-
-  useEffect(() => {
-    const updateProgress = () => {
-      const elapsed = Date.now() - startTime
-      const calculated = (elapsed / countdownDuration) * 100
-      const clamped = Math.max(0, Math.min(100, calculated))
-      setProgress(clamped)
-    }
-
-    updateProgress()
-    const intervalId = setInterval(updateProgress, 1000)
-    return () => clearInterval(intervalId)
-  }, [countdownDuration, startTime])
 
   useEffect(() => {
     if (progress >= 100) {
       setShowLaunchPopup(true)
     }
   }, [progress])
+  
+  useEffect(() => {
+    let rafId;
+  
+    const updateProgress = () => {
+      const elapsed = Date.now() - startTime;
+      const calculated = (elapsed / countdownDuration) * 100;
+      const clamped = Math.max(0, Math.min(100, calculated));
+      setProgress(clamped);
+  
+      if (clamped < 100) {
+        rafId = requestAnimationFrame(updateProgress);
+      } else {
+        setProgress(100);
+      }
+    };
+  
+    rafId = requestAnimationFrame(updateProgress);
+    return () => cancelAnimationFrame(rafId);
+  }, [countdownDuration, startTime]);
 
   return (
     <main className="relative flex h-screen items-center justify-center overflow-hidden bg-[url('/bg-food.webp')] bg-cover bg-center px-4 py-8 font-[Poppins]">
@@ -127,12 +134,12 @@ function ComingSoon() {
               </div>
               <span className="progress-text">{`${Math.round(progress)}% Cooked`}</span>
               <motion.img
-                className="progress-icon"
-                src="/forksnknives.svg"
-                alt="Fork and knives"
-                animate={{ left: `${progress}%` }}
-                transition={{ duration: 0.5, ease: 'easeOut' }}
-              />
+  className="progress-icon"
+  src="/forksnknives.svg"
+  alt="Fork and knives"
+  animate={{ left: `${progress}%` }}
+  transition={{ duration: 0, ease: 'linear' }} // 👈 was 0.5s, now instant
+/>
             </div>
           </div>
         </div>
@@ -185,7 +192,7 @@ function ComingSoon() {
                 </button>
                 <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-[#2ECC71]">ZaikaMate</p>
                 <h2 className="bg-linear-to-r from-orange-500 to-orange-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
-                  Wait is over, ZaikaMate is here!!!
+                  Fresh off the grill — ZaikaMate is here!
                 </h2>
               </motion.div>
             </motion.div>
