@@ -71,7 +71,7 @@ function ComingSoon() {
   }, [progress])
 
   return (
-    <main className="relative flex h-screen items-center justify-center overflow-hidden bg-[url('/bg-food.png')] bg-cover bg-center px-4 py-8 font-[Poppins]">
+    <main className="relative flex h-screen items-center justify-center overflow-hidden bg-[url('/bg-food.webp')] bg-cover bg-center px-4 py-8 font-[Poppins]">
       <div className="pointer-events-none absolute inset-0 bg-white/18 backdrop-blur-[1px]" />
       {floatingElements.map((item) => (
         <motion.div
