@@ -147,58 +147,74 @@ function ComingSoon() {
       </motion.section>
 
       <AnimatePresence>
-        {showLaunchPopup && (
-          <>
-            <motion.div
-              className="absolute inset-0 z-40 bg-black/20 backdrop-blur-[2px]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            />
+  {showLaunchPopup && (
+    <>
+      <motion.div
+        className="absolute inset-0 z-40 bg-black/20 backdrop-blur-[2px]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      />
 
-            {celebrationParticles.map((particle) => (
-              <motion.span
-                key={particle.id}
-                className="pointer-events-none absolute z-50 text-2xl sm:text-3xl"
-                style={{ left: particle.x, top: particle.y }}
-                initial={{ opacity: 0, scale: 0.4, y: 20 }}
-                animate={{ opacity: [0, 1, 1, 0], scale: [0.4, 1.2, 1, 0.8], y: [20, -24, -60] }}
-                transition={{ duration: 1.6, delay: particle.delay, repeat: Infinity, repeatDelay: 0.35, ease: 'easeOut' }}
-              >
-                {particle.icon}
-              </motion.span>
-            ))}
+      {celebrationParticles.map((particle) => (
+        <motion.span
+          key={particle.id}
+          className="pointer-events-none absolute z-50 text-2xl sm:text-3xl"
+          style={{ left: particle.x, top: particle.y }}
+          initial={{ opacity: 0, scale: 0.4, y: 20 }}
+          animate={{ opacity: [0, 1, 1, 0], scale: [0.4, 1.2, 1, 0.8], y: [20, -24, -60] }}
+          transition={{ duration: 1.6, delay: particle.delay, repeat: Infinity, repeatDelay: 0.35, ease: 'easeOut' }}
+        >
+          {particle.icon}
+        </motion.span>
+      ))}
 
-            <motion.div
-              className="absolute inset-0 z-50 flex items-center justify-center px-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <motion.div
-                className="relative w-full max-w-lg rounded-3xl border border-white/70 bg-[#fff7ee]/88 p-8 text-center shadow-[0_20px_60px_rgba(0,0,0,0.25)] backdrop-blur-xl"
-                initial={{ scale: 0.85, y: 24 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.9, y: 20 }}
-                transition={{ duration: 0.45, ease: 'easeOut' }}
-              >
-                <button
-                  type="button"
-                  onClick={() => setShowLaunchPopup(false)}
-                  className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-red-200/70 bg-white/45 text-2xl leading-none text-red-500 shadow-[0_8px_20px_rgba(239,68,68,0.2)] backdrop-blur-md transition hover:bg-white/60 hover:text-red-600"
-                  aria-label="Close popup"
-                >
-                  ×
-                </button>
-                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-[#2ECC71]">ZaikaMate</p>
-                <h2 className="bg-linear-to-r from-orange-500 to-orange-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
-                  Fresh off the grill — ZaikaMate is here!
-                </h2>
-              </motion.div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      <motion.div
+        className="absolute inset-0 z-50 flex items-center justify-center px-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <motion.div
+          className="relative w-full max-w-lg rounded-3xl border border-white/70 bg-[#fff7ee]/88 p-8 text-center shadow-[0_20px_60px_rgba(0,0,0,0.25)] backdrop-blur-xl"
+          initial={{ scale: 0.85, y: 24 }}
+          animate={{ scale: 1, y: 0 }}
+          exit={{ scale: 0.9, y: 20 }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
+        >
+          <button
+            type="button"
+            onClick={() => setShowLaunchPopup(false)}
+            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-red-200/70 bg-white/45 text-2xl leading-none text-red-500 shadow-[0_8px_20px_rgba(239,68,68,0.2)] backdrop-blur-md transition hover:bg-white/60 hover:text-red-600"
+            aria-label="Close popup"
+          >
+            ×
+          </button>
+
+          <div className="mb-4 text-5xl">🍽️</div>
+
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#2ECC71]">ZaikaMate</p>
+
+          <h2 className="font-[Playfair_Display] bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
+            Our AI ate so you don't have to guess.
+          </h2>
+
+          <p className="mt-3 text-sm font-medium text-zinc-500">
+            Thousands of reviews. One smart verdict. Ready to compare?
+          </p>
+
+          <button
+            type="button"
+            onClick={() => setShowLaunchPopup(false)}
+            className="mt-5 rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-8 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(234,88,12,0.35)] transition hover:opacity-90"
+          >
+            Explore Now 🚀
+          </button>
+        </motion.div>
+      </motion.div>
+    </>
+  )}
+</AnimatePresence>
     </main>
   )
 }
